@@ -1,12 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>作業-農場資訊</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作業-農場資訊</title>
+</head>
+
+<body>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: "豬",
+        en: "pig",
+        male: 11,
+        female: 5,
+        isLarge: false
+      },
+      {
+        id: 2,
+        name: "虎",
+        en: "tiger",
+        male: 3,
+        female: 10,
+        isLarge: true
+      },
+      {
+        id: 3,
+        name: "馬",
+        en: "house",
+        male: 9,
+        female: 8,
+        isLarge: true
+      },
+      {
+        id: 4,
+        name: "羊",
+        en: "sheep",
+        male: 22,
+        female: 34,
+        isLarge: false
+      },
+      {
+        id: 5,
+        name: "兔",
+        en: "rabbit",
+        male: 37,
+        female: 4,
+        isLarge: false
+      }
+    ];
+
+    // e.遇到第一種動物的時候，跳過操作
+    // 取出第一種動物的 key
+    let firstAnimalKey = farm[0].en;
+    // console.log(firstAnimalKey);
+    // f.皆用迴圈來計算及處理，資料不能寫死
+    // a.
+    let farmInfo = {}
+    for (let animal of farm) {
+      if (animal.en === firstAnimalKey) {
+        continue;
+      }
+      farmInfo[animal.en] = {};
+    }
+    // console.log(farmInfo);
+    // b.
+    for (let animal of farm) {
+      if (animal.en === firstAnimalKey) {
+        continue;
+      }
+      farmInfo[animal.en].count = animal.male + animal.female;
+    }
+    // console.log(farmInfo);
+    // c.
+    for (let key in farmInfo) {
+      if (farmInfo[key].count >= 50) {
+        farmInfo[key].groupSize = "大";
+      }
+      else if (farmInfo[key].count < 50 && farmInfo[key].count > 15) {
+        farmInfo[key].groupSize = "中";
+      }
+      else {
+        farmInfo[key].groupSize = "小";
+      }
+    }
+    // console.log(farmInfo);
+    // d.
+    let sum = 0;
+    for (let key in farmInfo) {
+      sum += farmInfo[key].count;
+    }
+    farmInfo.total = sum;
+    // console.log(farmInfo);
+    // e.
+    let maleSum = 0;
+    let animalCount = 0;
+    for (let animal of farm) {
+      if (animal.en === firstAnimalKey) {
+        continue;
+      }
+      maleSum += animal.male;
+      animalCount++;
+    }
+    farmInfo.maleAverage = maleSum / animalCount;
+    console.log(farmInfo);
+
+  </script>
+</body>
+
 </html>
