@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>資料類型 Data Types</title>
+</head>
+
+<body>
+  <script>
+    /*
+    let a = "a"; // 字串
+    console.log(a); // a
+
+    let b = 1; // 數字
+    console.log(b); // 1
+
+    let c = true; // 布林值 true or false
+    console.log(c); // true
+
+    let d = undefined; // 未定義
+    console.log(d); // undefined
+
+    let e = null; // 空值
+    console.log(e); // null
+    */
+
+    /*
+    // 物件 object
+    let info = {
+      // 屬性
+      name: "John",
+      age: 24,
+      color: "white",
+      // 方法
+      sayHello: function () {
+        console.log("Hello");
+      }
+    };
+    console.log(info); // {name: 'John', age: 24, color: 'white', sayHello: ƒ}
+    // 存取物件屬性
+    console.log(info.name); // John
+    // 用字串當作"key"存取
+    console.log(info["color"]); // white
+    // 用變數(字串)當作"key"存取
+    let key = "age";
+    console.log(info[key]); // 24
+    // 存取物件方法
+    info.sayHello(); // Hello
+
+    // 改變物件屬性
+    info.color = "black";
+    console.log(info.color); // black 
+    */
+
+    /*
+    // 物件 ~ 陣列 Array
+    let array = ['apple', 0, false, undefined, null, { name: "Allie" }]
+    console.log(array);
+    // ['apple', 0, false, undefined, null, {…}]
+    let greeting = "我想吃午餐! 等等吃自助餐"
+
+    console.log(array[0]); // apple
+    console.log(greeting[0]); // 我
+    console.log(array.length); // 6
+    console.log(greeting.length); // 13
+    // 索引值從 0 開始
+    let lastIndex = greeting.length - 1;
+    console.log(greeting[lastIndex]); // 餐
+    */
+
+    /*
+    // 傳值 pass by value
+    let x = 1;
+    let y = x;
+    console.log("x", x); // 1
+    console.log("y", y); // 1
+    y = 2;
+    console.log("x", x); // 1
+    console.log("y", y); // 2
+    x = 3;
+    console.log("x", x); // 3
+    console.log("y", y); // 2
+    */
+
+    /*
+    // 傳址 pass by reference
+    let car1 = {
+      color: "red"
+    };
+    let car2 = car1;
+    // console.log("car2", car2.color); // red
+    // car2.color = "blue";
+    // console.log("car2", car2.color); // blue
+    // console.log("car1", car1.color); // blue
+
+    car2 = {
+      color: "yellow"
+    }
+    console.log("car2", car2.color); // yellow
+    console.log("car1", car1.color); // red
+
+    let car3 = Object.assign({}, car1);
+    console.log("car3", car3.color); // red
+    car3.color = "green";
+    console.log("car3", car3.color); // green
+    console.log("car1", car1.color); // red
+    */
+
+    /*
+    // 展開運算子
+    let car1 = {
+      brand: "BMW",
+      color: "red"
+    };
+    let car4 = { ...car1 };
+    console.log("car1", car1); // {brand: 'BMW', color: 'red'}
+    console.log("car4", car4); // {brand: 'BMW', color: 'red'}
+    car4.color = "green";
+    console.log("car1", car1); // {brand: 'BMW', color: 'red'}
+    console.log("car4", car4); // {brand: 'BMW', color: 'green'}
+    */
+
+    // 淺拷貝
+    let car5 = {
+      color: "white",
+      owner: {
+        name: "Allie",
+      }
+    };
+
+    let car6 = { ...car5 }
+    car6.color = "black";
+    console.log("car5", car5); // {color: 'white', owner: { name: "Allie" }}
+    console.log("car6", car6); // {color: 'black', owner: { name: "Allie" }}
+
+    car6.owner.name = "Tom";
+    console.log("car5", car5); // {color: 'white', owner: { name: "Tom" }}
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-重構</title>
+</head>
+
+<body>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: "豬",
+        en: "pig",
+        male: 11,
+        female: 5,
+        isLarge: false
+      },
+      {
+        id: 2,
+        name: "虎",
+        en: "tiger",
+        male: 3,
+        female: 10,
+        isLarge: true
+      },
+      {
+        id: 3,
+        name: "馬",
+        en: "house",
+        male: 9,
+        female: 8,
+        isLarge: true
+      },
+      {
+        id: 4,
+        name: "羊",
+        en: "sheep",
+        male: 22,
+        female: 34,
+        isLarge: false
+      },
+      {
+        id: 5,
+        name: "兔",
+        en: "rabbit",
+        male: 37,
+        female: 4,
+        isLarge: false
+      }
+    ]
+
+    // 練習-場地
+    for (let animal of farm) {
+      let Field = animal.isLarge || animal.male + animal.female > 20 ? "大" : "小";
+      console.log(`動物${animal.name}，需要${Field}場地`);
+    }
+
+    // 練習-園區
+    let newFarm = [];
+    for (let i = 0; i < farm.length; i++) {
+      let animal = { ...farm[i] }
+      if (animal.id % 2 === 0) {
+        animal.area = "B"
+      }
+      else {
+        animal.area = "A"
+      }
+      // 把 animal 放進 newFarm
+      newFarm.push(animal)
+    }
+
+    console.log(farm);
+    console.log(newFarm);
+
+  </script>
+</body>
+
+</html>

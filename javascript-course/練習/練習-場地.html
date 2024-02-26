@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-場地</title>
+</head>
+
+<body>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: "豬",
+        en: "pig",
+        male: 11,
+        female: 5,
+        isLarge: false
+      },
+      {
+        id: 2,
+        name: "虎",
+        en: "tiger",
+        male: 3,
+        female: 10,
+        isLarge: true
+      },
+      {
+        id: 3,
+        name: "馬",
+        en: "house",
+        male: 9,
+        female: 8,
+        isLarge: true
+      },
+      {
+        id: 4,
+        name: "羊",
+        en: "sheep",
+        male: 22,
+        female: 34,
+        isLarge: false
+      },
+      {
+        id: 5,
+        name: "兔",
+        en: "rabbit",
+        male: 37,
+        female: 4,
+        isLarge: false
+      }
+    ]
+
+    let pig = farm[0];
+    let tiger = farm[1];
+    let house = farm[2];
+    let sheep = farm[3];
+    let rabbit = farm[4];
+
+    let pigField = pig.isLarge || pig.male + pig.female > 20 ? "大" : "小";
+    let tigerField = tiger.isLarge || tiger.male + tiger.female > 20 ? "大" : "小";
+    let houseField = house.isLarge || house.male + house.female > 20 ? "大" : "小";
+    let sheepField = sheep.isLarge || sheep.male + sheep.female > 20 ? "大" : "小";
+    let rabbitField = rabbit.isLarge || rabbit.male + rabbit.female > 20 ? "大" : "小";
+
+    console.log(`動物${pig.name}，需要${pigField}場地`);
+    console.log(`動物${tiger.name}，需要${tigerField}場地`);
+    console.log(`動物${house.name}，需要${houseField}場地`);
+    console.log(`動物${sheep.name}，需要${sheepField}場地`);
+    console.log(`動物${rabbit.name}，需要${rabbitField}場地`);
+
+    /*
+    // 用迴圈
+    for (let i = 0; i < farm.length; i++) {
+      let Name = farm[i].name;
+      let sum = farm[i].male + farm[i].female;
+      Let isLarge = farm[i].isLarge;
+      let result;
+      (isLarge || (sum > 20)) ? result = "大" : result = "小";
+      let temString = `動物${Name}，需要${result}場地`
+      console.log(temString);
+    }
+    */
+
+  </script>
+</body>
+
+</html>

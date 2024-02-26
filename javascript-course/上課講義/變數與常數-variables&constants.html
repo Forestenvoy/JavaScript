@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>變數與常數 Variables & Constants</title>
+</head>
+
+<body>
+  <script>
+    /*
+    // 變數宣告
+    let greeting;
+    console.log(greeting); // undefined 未定義
+
+    greeting = "Hello";
+    console.log(greeting); // Hello
+
+    // 變數宣告 + 賦值(初始化)
+    let greeting2 = "Hello World";
+    console.log(greeting2); // Hello World
+    */
+    /*
+    // let 變數重新賦值
+    let x = "Hello";
+    console.log(x);
+    x = "World";
+    console.log(x);
+    // var 變數重新賦值
+    var y = "Hello";
+    console.log(y);
+    y = "World";
+    console.log(y);
+    // var 可重新宣告 <-- 不建議這麼做
+    var y = "Hi"
+    console.log(y);
+    */
+    /*
+    // 常數宣告，一定要賦值
+    const PI = 3.14;
+    console.log(PI);
+    */
+
+    /*
+    // 函數作用域
+    function print() {
+      var a = "a";
+      // 區塊作用域
+      if (true) {
+        let b = "b";
+        const c = "c";
+        var d = "d";
+        e = "e"; // e 是全域變數
+        // b、c 都是 if()區塊 的變數
+        // d 是 print() 函數的變數
+      }
+      // a 是 print() 函數的變數
+      console.log(a); // a
+      console.log(d); // d
+      console.log(e); // e
+      // console.log(b); // error
+      // console.log(c); // error
+    }
+    print();
+    console.log(e); // e
+    console.log(a); // error
+    */
+
+    /*
+    // 提升 Hosting
+    console.log(a); // undefined
+    var a = "1";
+    console.log(a); // 1
+    // 上述等同於下述
+    var a;
+    console.log(a); // undefined
+    a = "1";
+    console.log(a); // 1
+    */
+
+    console.log(b); // error
+    let b = 2;
+
+    console.log(c); // error
+    const c = 3;
+
+  </script>
+</body>
+
+</html>
