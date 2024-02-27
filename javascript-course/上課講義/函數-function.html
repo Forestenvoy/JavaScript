@@ -86,6 +86,7 @@
     arrowPrint2("Robert", "Hello");
     */
 
+    /*
     // 立即執行函數 IIFE <-- 只用一次
     // add 函數
     (function (a, b) {
@@ -100,6 +101,20 @@
       return a + b;
     })(1, 2);
     console.log(add);
+    */
+
+    // function 優先提升
+    greeting("Robert");
+    var greeting = (name) => {
+      console.log(`Hello, ${name}`);
+    }
+    function greeting(name) {
+      console.log(`Hi, ${name}`);
+    }
+    greeting("Robert");
+    // Hi, Robert
+    // Hello, Robert
+
 
   </script>
 </body>
