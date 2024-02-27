@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>練習-計算機函數</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-計算機函數</title>
+</head>
+
+<body>
+  <script>
+    // 減法
+    function substract(a, b) {
+      return a - b;
+    }
+    // 總和
+    function sum(numbers) {
+      let sum = 0;
+      for (let num of numbers) {
+        sum += num;
+      }
+      return sum;
+    }
+
+    function calculator(type, ...numbers) {
+      // 取前兩個數字
+      let a, b;
+      if (numbers.length >= 2) {
+        a = numbers[0];
+        b = numbers[1];
+      }
+      else {
+        console.log("請至少輸入兩個數字");
+        return;
+      }
+      switch (type) {
+        case "add": // 加法
+          return (a + b);
+        case "subtract": // 減法
+          return substract(a, b);
+        case "multiply": // 乘法
+          return (a * b);
+        case "divide": // 除法
+          return (a / b);
+        case "mod": // 餘數
+          return (a % b);
+        case "power": // 次方
+          return (a ** b);
+        case "sum": // 全部數總和
+          return sum(numbers);
+        default:
+          console.log("type 格式錯誤");
+          break;
+      }
+    }
+
+    let subtractResult = calculator("subtract", 5, 17, 1, 2, 3);
+    let sumResult = calculator("sum", 5, 17, 1, 2, 3);
+
+    console.log(subtractResult); // -12
+    console.log(sumResult); // 28
+
+  </script>
+</body>
+
 </html>
