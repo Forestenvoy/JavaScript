@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>函數 Function</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>函數 Function</title>
+</head>
+
+<body>
+  <script>
+    /*
+    // 函數陳述式的提升 Hoisting
+    hi();
+    function hi() {
+      console.log("Hi");
+    }
+
+    // 參數 Parameter，Robert為預設參數 
+    function print(name = "Robert", greeting = "Hello") {
+      console.log(`${greeting}, ${name}`);
+    }
+    // 'Tom'、'Hi'為引數(傳入的參數) Argument
+    // 參數跟引數的順序要一致
+    print("Tom", "Hi"); // Hi, Tom
+    print("Hi", "Tom"); // Tom, Hi
+    print(); // Hello, Robert
+    */
+
+    /*
+    // 其餘運算子 ...
+    function printNumbers(...num) {
+      console.log(num);
+    }
+    printNumbers(1, 2, 3, 4, 5); // [1, 2, 3, 4, 5] <-- 陣列
+    */
+
+    /*
+    // callback 回調函數
+    function washFace() {
+      console.log("洗臉");
+    }
+    function brushTeeth() {
+      console.log("刷牙");
+    }
+
+    function wakeUp(callback, callback2) {
+      console.log("起床");
+      // 把函數當作參數傳入
+      callback(callback2());
+    }
+    wakeUp(washFace, brushTeeth); // 起床 -> 洗臉 -> 刷牙
+    */
+
+    /*
+    // Return
+    function add(a, b) {
+      return a + b;
+    }
+    // 需要用一個變數去接回傳的結果
+    let total = add(3 + 5);
+    console.log(total);
+    */
+
+    /*
+    // 函數表達式 -> 沒有提升
+    let print = function () {
+      console.log("Hi");
+    }
+    // 函數陳述式
+    function print2() {
+      console.log("Hi");
+    }
+    print();
+
+
+    // 箭頭函數 Arrow Function
+    let arrowPrint = () => {
+      console.log("Hi");
+    }
+    arrowPrint();
+
+    let arrowPrint2 = (name, greeting) => {
+      console.log(`${greeting}, ${name}`);
+    }
+    arrowPrint2("Robert", "Hello");
+    */
+
+
+
+  </script>
+</body>
+
 </html>

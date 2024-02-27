@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>練習-計算機總和</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-計算機總和</title>
+</head>
+
+<body>
+  <script>
+    function calculate(type, ...numbers) {
+      // 取前兩個數字
+      let a, b;
+      if (numbers.length >= 2) {
+        a = numbers[0];
+        b = numbers[1];
+      }
+      switch (type) {
+        case "add": // 加法
+          console.log(a + b);
+          break;
+        case "substract": // 減法
+          console.log(a - b);
+          break;
+        case "multiply": // 乘法
+          console.log(a * b);
+          break;
+        case "divide": // 除法
+          console.log(a / b);
+          break;
+        case "mod": // 餘數
+          console.log(a % b);
+          break;
+        case "power": // 次方
+          console.log(a ** b);
+          break;
+        case "sum": // 全部數總和
+          let sum = 0;
+          for (let num of numbers) {
+            sum += num;
+          }
+          console.log(sum);
+          break;
+        default:
+          console.log("type 格式錯誤");
+          break;
+      }
+    }
+
+    calculate("add", 8, 5);
+    calculate("sum", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  </script>
+</body>
+
 </html>
