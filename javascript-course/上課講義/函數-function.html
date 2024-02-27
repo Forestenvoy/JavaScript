@@ -86,7 +86,20 @@
     arrowPrint2("Robert", "Hello");
     */
 
+    // 立即執行函數 IIFE <-- 只用一次
+    // add 函數
+    (function (a, b) {
+      console.log(a + b);
+    })(1, 2);
 
+    ((greeting) => {
+      console.log(greeting)
+    })("Hello");
+    // 用變數去接 立即執行函數的回傳值
+    let add = ((a, b) => {
+      return a + b;
+    })(1, 2);
+    console.log(add);
 
   </script>
 </body>
