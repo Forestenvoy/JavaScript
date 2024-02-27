@@ -1,12 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Array 物件方法 Array Methods</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Array 物件方法 Array Methods</title>
+</head>
+
+<body>
+  <script>
+    /*
+    // 基本類型與物件類型的轉換
+    let greeting = "hi";
+    console.log(greeting);
+    let greetingObject = new String("hi");
+    console.log(greetingObject);
+    let numberObject = new Number(0);
+    console.log(numberObject);
+    let booleanObject = new Boolean(true);
+    console.log(booleanObject);
+    // 顯性的 強制轉型
+    console.log(new Number("1"));
+    console.log(new Boolean("true"));
+    */
+
+    /*
+    // push() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    let fruitsArray = new Array("orange", "grape", "lemon", "apple", "banana");
+    console.log(fruitsArray);
+    // ['orange', 'grape', 'lemon', 'apple', 'banana']
+    fruits.push("peach");
+    console.log(fruits);
+    // ['orange', 'grape', 'lemon', 'apple', 'banana', 'peach']
+    */
+    /*
+    // pop() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.pop());
+    // banana
+    console.log(fruits);
+    // ['orange', 'grape', 'lemon', 'apple']
+    */
+    /*
+    // shift() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.shift());
+    // orange
+    console.log(fruits);
+    // ['grape', 'lemon', 'apple', 'banana']
+    */
+    /*
+    // unshift() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    fruits.unshift("peach", "watermelon");
+    console.log(fruits);
+    // ['peach', 'watermelon', 'orange', 'grape', 'lemon', 'apple', 'banana']
+    */
+    /*
+    // slice() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.slice(2, 3)); // ['lemon']
+    console.log(fruits.slice(1)); // ['grape', 'lemon', 'apple', 'banana']
+    console.log(fruits.slice(-3)); // ['lemon', 'apple', 'banana']
+    */
+    /*
+    // splice() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.splice(1, 2, "watermelon", "peach")); // ['grape', 'lemon']
+    console.log(fruits); // ['orange', 'watermelon', 'peach', 'apple', 'banana']
+    */
+    /*
+    // concat() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    let fruits2 = ["watermelon", "peach"];
+    let fruits3 = ["kiwi"];
+    console.log(fruits.concat(fruits2, fruits3));
+    // ['orange', 'grape', 'lemon', 'apple', 'banana', 'watermelon', 'peach', 'kiwi']
+    let newFruits = [...fruits, ...fruits2, ...fruits3];
+    console.log(newFruits);
+    // ['orange', 'grape', 'lemon', 'apple', 'banana', 'watermelon', 'peach', 'kiwi']
+    */
+    /*
+    // sort() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.sort());
+    // ['apple', 'banana', 'grape', 'lemon', 'orange']
+    */
+    /*
+    // reverse() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.reverse());
+    // ['banana', 'apple', 'lemon', 'grape', 'orange']
+    */
+    /*
+    // indexOf() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.indexOf("grape")); // 1
+    console.log(fruits.indexOf("cherry")); // -1
+    let testFruits = [...fruits]
+    testFruits.push("orange");
+    console.log(testFruits.indexOf("orange")); // 0
+    */
+    /*
+    // includes() 方法
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits.includes("grape")); // true
+    console.log(fruits.includes("cherry")); // false
+    */
+    /*
+    // for each
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    fruits.forEach(function (fruit, index, fruits) {
+      console.log(`水果${fruit}, index${index}, 共有${fruits.length}個水果`);
+    })
+    // 水果orange, index0, 共有5個水果
+    // 水果grape, index1, 共有5個水果
+    // 水果lemon, index2, 共有5個水果
+    // 水果apple, index3, 共有5個水果
+    // 水果banana, index4, 共有5個水果
+    fruits.forEach((item, index, array) => {
+      console.log(item);
+    })
+    // orange
+    // grape
+    // lemon
+    // apple
+    // banana
+    */
+    /*
+    // 取得最後一個元素
+    let fruits = ["orange", "grape", "lemon", "apple", "banana"];
+    console.log(fruits[fruits.length - 1]);
+    console.log(fruits.at(-1));
+    */
+
+    const products = [
+      { name: '筆記型電腦', category: '電子產品', price: 30000, stock: 10 },
+      { name: '襯衫', category: '服裝', price: 200, stock: 500 },
+      { name: '咖啡機', category: '家電', price: 4000, stock: 5 },
+      { name: '書籍', category: '文學', price: 300, stock: 100 },
+      { name: '智能手機', category: '電子產品', price: 20000, stock: 15 },
+      { name: '牛仔褲', category: '服裝', price: 600, stock: 30 },
+    ];
+
+    // reduce() 方法
+    /*
+    array.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue
+    }, initialValue);
+    */
+    const totalStock = products.reduce((total, item) => {
+      return total + item.stock
+    }, 0)
+    console.log(totalStock);
+
+
+    // // findIndex() 方法
+    // const appareProduct = products.findIndex((item) => item.category === '服裝');
+    // console.log(appareProduct); // 1
+    // const noResultProduct = products.findIndex((item) => item.stock > 1000);
+    // console.log(noResultProduct); // -1
+
+    // // find() 方法
+    // const appareProduct = products.find((item) => item.category === '服裝');
+    // console.log(appareProduct);
+    // // { name: '襯衫', category: '服裝', price: 200, stock: 500 }
+    // const noResultProduct = products.find((item) => item.stock > 1000);
+    // console.log(noResultProduct);
+    // // undefined
+
+    // // every() 方法
+    // const checkPrice = products.every((item) => item.price > 1000);
+    // console.log(checkPrice); // false
+
+    // // some() 方法
+    // let checkStock = products.some((item) => item.stock < 10);
+    // console.log(checkStock); // true
+
+    // // sort() 方法
+    // // a、b 前後兩個要比較的東西
+    // let acendsortedProducts = [...products];
+    // acendsortedProducts.sort((a, b) => {
+    //   return a.price - b.price; // 由小到大
+    // })
+    // console.log(acendsortedProducts);
+    // let decendsortedProducts = [...products];
+    // decendsortedProducts.sort((a, b) => {
+    //   return b.price - a.price; // 由大到小
+    // })
+    // console.log(decendsortedProducts);
+
+    // // filter() 篩選方法
+    // let electronicProducts = products.filter((item, i, arr) => {
+    //   return item.category === '電子產品';
+    // })
+    // console.log(electronicProducts);
+
+    // let otherProducts = products.filter(item => item.category !== '文學');
+    // console.log(otherProducts);
+    /*
+    // map() 方法
+    let productNames = products.map((item, i, array) => {
+      return item.name;
+    });
+    console.log(productNames);
+    // Arrow 精簡寫法
+    let productNames1 = products.map((item, i, array) => item.name);
+    console.log(productNames1);
+    let productNames2 = products.map(item => item.name);
+    console.log(productNames2);
+    */
+
+
+  </script>
+</body>
+
 </html>

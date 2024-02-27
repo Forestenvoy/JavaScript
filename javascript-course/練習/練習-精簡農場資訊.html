@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>練習-精簡農場資訊</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-精簡農場資訊</title>
+</head>
+
+<body>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: "豬",
+        en: "pig",
+        male: 11,
+        female: 5,
+        isLarge: false
+      },
+      {
+        id: 2,
+        name: "虎",
+        en: "tiger",
+        male: 3,
+        female: 10,
+        isLarge: true
+      },
+      {
+        id: 3,
+        name: "馬",
+        en: "house",
+        male: 9,
+        female: 8,
+        isLarge: true
+      },
+      {
+        id: 4,
+        name: "羊",
+        en: "sheep",
+        male: 22,
+        female: 34,
+        isLarge: false
+      },
+      {
+        id: 5,
+        name: "兔",
+        en: "rabbit",
+        male: 37,
+        female: 4,
+        isLarge: false
+      }
+    ]
+
+    let newAnimals = [];
+    // 資訊精簡化
+    function createAnimal(animal) {
+      let newAnimal = {
+        name: animal.name,
+        count: animal.male + animal.female
+      };
+      return newAnimal;
+    }
+    for (let animal of farm) {
+      newAnimals.push(createAnimal(animal));
+    }
+    // console.log(newAnimals);
+    // 移除 index 為 2 的一種動物，並同時新增三種新的動物
+    newAnimals.splice(2, 1, { name: '牛', count: 11 }, { name: '驢', count: 7 }, { name: '雞', count: 26 });
+    console.log(newAnimals);
+    // 切出兩個小陣列
+    let allAnimals = (newAnimals.slice(0, 2).concat(newAnimals.slice(5)));
+    console.log(allAnimals);
+    // foreach
+    allAnimals.forEach((item, index, array) => {
+      console.log(`動物 ${item.name}，數量 ${item.count}`);
+    })
+
+  </script>
+</body>
+
 </html>
