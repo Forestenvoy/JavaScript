@@ -1,0 +1,3 @@
+# 忽略 PowerPoint 暫存檔案
+~$*.pptx
+~$*.ppt
