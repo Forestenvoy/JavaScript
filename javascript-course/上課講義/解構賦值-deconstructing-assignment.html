@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>解構賦值 deconstructing assignment</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>解構賦值 deconstructing assignment</title>
+</head>
+
+<body>
+  <script>
+    // const fruits = ["lemon", "banana", "orange", "apple"];
+    // // 解構賦值
+    // // 新變數數量>原變數數量，會變成undefined
+    // const [lemon, banana, orange, apple, peach] = fruits;
+    // console.log(lemon, banana, orange, apple, peach);
+    // // lemon banana orange apple undefined
+    // // 跳過某個值
+    // const [A, B, , D] = fruits;
+    // console.log(A, B, D); // lemon banana apple
+
+    const fruitsObj = {
+      lemon: "檸檬",
+      banana: "香蕉",
+      orange: "橘子",
+      apple: "蘋果"
+    };
+    // 解構也可以順便改新名稱
+    const { lemon, banana: myBanana, orange: myOrange, apple: myApple } = fruitsObj;
+    console.log(lemon, myBanana, myOrange, myApple);
+    // 檸檬 香蕉 橘子 蘋果
+  </script>
+</body>
+
 </html>

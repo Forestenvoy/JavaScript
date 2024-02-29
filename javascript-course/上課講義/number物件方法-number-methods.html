@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Number 物件方法 Number Methods</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number 物件方法 Number Methods</title>
+</head>
+
+<body>
+  <script>
+    // // Number()
+    // // 轉換失敗 NaN (Not a Number)
+    // // NaN 是一種特殊的數值
+    // console.log(Number("1")); // 1
+    // console.log(Number("1.1")); // 1.1
+    // console.log(Number("1.1.1")); // NaN
+    // console.log(Number(0)); // 0
+    // console.log(Number(true)); // 1
+    // console.log(Number("0Apple")) //NaN
+
+    // // 0、空字串 是 falsy value
+    // console.log(Boolean("")) // false
+    // console.log(Number("")) // 0
+    // console.log(Number(false)) // 0
+
+    // console.log(Number.isNaN(NaN)); // true
+    // // isNaN 在檢查之前會先嘗試將參數轉換為數字，在檢查結果是否為 NaN
+    // // Number.isNaN 嚴格檢查參數是否可轉換為數字，才檢查數字是不是 NaN。
+    // console.log(isNaN("0apple")); // true --> 先將參數轉換為數字。如果可以成功將參數轉換為數字，結果是 NaN，才回傳 true
+    // console.log(Number.isNaN("0apple")); // false --> 先檢查是否為數字，不是數字就直接回傳 false
+
+    // console.log(Number.isInteger(15.1)); // false
+    // console.log(Number.isInteger(15)); // true
+
+    // console.log(Number.parseFloat("42.2")); // 42.2
+    // console.log(Number.parseFloat(42.2)); // 42.2
+    // console.log(Number.parseInt("42.2")); // 42
+    // console.log(Number.parseInt(42.2)); // 42
+
+    // // Math 物件方法
+    // console.log(Math.round(3.574)); // 4 四捨五入
+    // console.log(Math.floor(3.574)); // 3 無條件捨去
+    // console.log(Math.ceil(3.574)); // 4 無條件進位
+    // console.log(Math.random()); // 0~1 隨機數
+    // console.log(Math.max(7, 1, 5, 3)); // 7 取最大值
+    // console.log(Math.min(7, 1, 5, 3)); // 1 取最小值
+    // // 數學常數
+    // console.log(Math.PI); // 3.141592653589793 圓周率
+    // console.log(Math.E); // 2.718281828459045 自然對數的底數
+
+    // Date 物件方法
+    const now = new Date();
+    console.log(`now: ${now}`);
+    const yesterday = new Date("2024-02-28");
+    const yesterday2 = new Date("2024/02/28");
+    const yesterday3 = new Date("2024.02.28");
+    console.log(`yesterday: ${yesterday}`);
+    console.log(`yesterday2: ${yesterday2}`);
+    console.log(`yesterday3: ${yesterday3}`);
+
+    console.log(now.getFullYear()); // 年份
+    console.log(now.getMonth() + 1); // 月份，從 0 開始
+    console.log(now.getDate()); // 日
+    console.log(now.getDay()); // 星期
+    console.log(now.getHours()); // 小時
+    console.log(now.getMinutes()); // 分鐘
+    console.log(now.getSeconds()); // 秒
+
+    console.log(now.toISOString()); // ISO 8601 格式
+  </script>
+</body>
+
 </html>

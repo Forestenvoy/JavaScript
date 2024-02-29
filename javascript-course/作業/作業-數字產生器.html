@@ -9,7 +9,27 @@
 
 <body>
   <script>
+    const numGenerator = (num, type) => {
+      let numbers = [];
+      // 檢查是否為數字
+      if (typeof num === "number") {
+        while (num > 0) {
+          numbers.push(Math.random() * 100);
+          num--;
+        }
+      }
+      // 檢查是否為陣列
+      else if (Array.isArray(num)) {
+        numbers = [...num];
+      }
 
+      if (type === "round") {
+
+      }
+    }
+
+    numGenerator(5, 2);
+    numGenerator([1, 2, 3, 4, 5], 2);
   </script>
 </body>
 
