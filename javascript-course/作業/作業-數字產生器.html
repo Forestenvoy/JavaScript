@@ -24,12 +24,27 @@
       }
 
       if (type === "round") {
-
+        numbers = numbers.map(num => Math.round(num));
       }
+      else if (type === "floor") {
+        numbers = numbers.map(num => Math.floor(num));
+      }
+      else if (type === "ceil") {
+        numbers = numbers.map(num => Math.ceil(num));
+      }
+
+      const result = {
+        numbers: numbers,
+        max: Math.max(...numbers),
+        min: Math.min(...numbers)
+      }
+
+      return result;
     }
 
-    numGenerator(5, 2);
-    numGenerator([1, 2, 3, 4, 5], 2);
+    console.log(numGenerator(5, "round"));
+    console.log(numGenerator([1, 2, 3, 4, 5], 2));
+
   </script>
 </body>
 
