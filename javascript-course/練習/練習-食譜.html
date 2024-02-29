@@ -1,12 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>練習-食譜</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-食譜</title>
+  <style>
+    button[data-color='0'] {
+      background-color: lightgoldenrodyellow;
+    }
+
+    button[data-color='1'] {
+      background-color: lightblue;
+    }
+
+    button[data-color='2'] {
+      background-color: lightpink;
+    }
+
+    button[data-color='3'] {
+      background-color: lightcyan;
+    }
+
+    button[data-color='4'] {
+      background-color: lightskyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="hashtagContainer">
+  </div>
+  <script>
+    let food = [
+      '   chicken-nuggets ',
+      ' beef-stew   ',
+      'apple-pie   ',
+      '  fish-tacos',
+      '  cheese-burger ',
+      '  spaghetti-bolognese ',
+      '   bacon-lettuce-tomato  ',
+      '   egg-salad  ',
+      '  garlic-bread ',
+      '  honey-mustard-chicken ',
+    ];
+    let newFood = [];
+    food.forEach(item => {
+      let newName = item.trim();
+      newName = newName[0].toUpperCase() + newName.slice(1);
+      newName = newName.replaceAll("-", ' ');
+      newFood.push(newName);
+    })
+
+    const containerEl = document.querySelector("#hashtagContainer");
+    // 創建 DOM 元素
+    for (let item of newFood) {
+      // 創建按鈕
+      const buttonEl = document.createElement("button");
+      // 屬性設定
+      buttonEl.dataset.color = Math.floor(Math.random() * 5);
+      buttonEl.innerHTML = "#" + item;
+      // ID 避免空格
+      const itemid = item.replaceAll(' ', '_');
+      buttonEl.id = itemid;
+      console.log(buttonEl.id);
+      containerEl.appendChild(buttonEl);
+    }
+
+    // let #Egg Salad 的上上一個按鈕 及 父層的最後一個按鈕
+    const targetEl = document.querySelector("#Egg_salad");
+    targetEl.previousElementSibling.previousElementSibling.style.fontWeight = "600";
+    targetEl.parentElement.lastElementChild.style.fontWeight = "600";
+  </script>
+</body>
+
 </html>
