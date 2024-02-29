@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文件物件模型 DOM</title>
+    <style>
+        .image {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <div id="content" data-index="0">
+        <h1 class="title">蜂蜜大蒜烤雞腿食譜</h1>
+        <img class="image" src="" alt="image" />
+        <p class="subtitle"></p>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th scope="col">編號</th>
+                    <th scope="col">材料</th>
+                    <th scope="col">量</th>
+                    <th scope="col">單位</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>雞腿</td>
+                    <td>4</td>
+                    <td>個</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>蜂蜜</td>
+                    <td>1/4</td>
+                    <td>杯</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>大蒜</td>
+                    <td>4</td>
+                    <td>瓣</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>橄欖油</td>
+                    <td>2</td>
+                    <td>湯匙</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="steps">
+            <ul class="items">
+                <li class="item">
+                    <strong>預熱烤箱：</strong>
+                    <span>將烤箱預熱至 200 度攝氏（約 400 度華氏）。</span>
+                </li>
+                <li class="item">
+                    <strong>準備調味醬汁：</strong>
+                    <span id="text">在一個小碗中，混合蜂蜜、切碎的大蒜和橄欖油。</span>
+                </li>
+                <li class="item">
+                    <strong>準備雞腿：</strong>
+                    <span>在烤盤上放一張烤紙，將雞腿排放在烤盤上。使用刷子，將蜂蜜大蒜醬汁均勻塗抹在雞腿的表面。</span>
+                </li>
+                <li class="item">
+                    <strong>烤制雞腿：</strong>
+                    <span>將雞腿放入預熱的烤箱中，烤約 40 至 45 分鐘，或直到雞腿表面呈金黃色且熟透。</span>
+                </li>
+                <li class="item">
+                    <strong>上桌享用：</strong>
+                    <span>從烤箱中取出雞腿，稍微冷卻後即可上桌享用。</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        //// 元素選擇
+        // 用"元素ID"來選擇 
+        const tableEl = document.getElementById("table");
+        console.log(tableEl);
+        // <table id="table">...</table>
+
+        // 用"元素標籤"來選擇
+        const thEls = document.getElementsByTagName("th");
+        console.log(thEls);
+        // 多個元素會回傳陣列
+        // HTMLCollection(8) [th, th, th, th, th, th, th, th]
+
+        // 用"元素類別"來選擇
+        const titleEls = document.getElementsByClassName("title");
+        console.log(titleEls);
+        // HTMLCollection(1) [h1.title]
+
+        // CSS選擇器
+        // 找到符合 Selector 的第一個元素
+        const imageEl = document.querySelector("img");
+        console.log(imageEl);
+        // <img class="image" src="" alt="image">
+        const pEl = document.querySelector("p");
+        console.log(pEl);
+        // <p class="subtitle"></p>
+        // 找到符合 Selector 的所有元素
+        const strongEls = document.querySelectorAll("strong");
+        console.log(strongEls);
+        // NodeList(5) [strong, strong, strong, strong, strong]
+
+        //// 操作元素屬性
+        // 直接設定table屬性
+        tableEl.style.backgroundColor = "lightgoldenrodyellow";
+        // 迴圈處理thEls陣列元素 
+        for (let thEL of thEls) {
+            thEL.style.color = "cornflowerblue";
+        }
+        // 更改title內容
+        titleEls[0].textContent = "<秘制>   蜂蜜大蒜烤雞腿食譜"; // 不會過濾多於空白
+        titleEls[0].innerTest = "<秘制>   蜂蜜大蒜烤雞腿食譜"; // 過濾多於空白
+        // 幫 image 設定 source
+        imageEl.src = "../../img/HoneyDrumstick.jpg";
+        imageEl.height = 300;
+
+        pEl.innerHTML = "這是一道 <em>非常簡單</em> 的料理"
+
+        for (let i = 0; i < strongEls.length; i++) {
+            strongEls[i].style.fontSize = "20px";
+        }
+
+        // 從 元素ID 尋找
+        const contentEL = document.querySelector("#content");
+        // 更改 自定義標籤
+        contentEL.dataset.index = 1;
+
+        //// 進階選擇 DOM
+        const textEl = document.querySelector("#text");
+        console.log(textEl.parentNode.parentNode.children[3]);
+        /*
+        <li class="item">
+            <strong style="font-size: 20px;">烤制雞腿：</strong>
+            <span>將雞腿放入預熱的烤箱中，烤約 40 至 45 分鐘，或直到雞腿表面呈金黃色且熟透。</span>
+        </li>
+        */
+        textEl.parentNode.parentNode.children[3].querySelector('strong').style.textDecoration = "underline";
+
+        // 該節點的 第一個元素
+        console.log(textEl.parentNode.parentNode.firstElementChild);
+        // 該節點的 第一個元素的下一個
+        console.log(textEl.parentNode.parentNode.firstElementChild.nextElementSibling);
+        // 該節點的 最後一個元素
+        console.log(textEl.parentNode.parentNode.lastElementChild);
+        // 該節點的 最後一個元素的上一個
+        console.log(textEl.parentNode.parentNode.lastElementChild.previousElementSibling);
+
+        //// 創建 DOM 元素
+        const buttonEl = document.createElement("button");
+        // 屬性設定
+        buttonEl.style.backgroundColor = "lightblue";
+        // buttonEl.innerText = "按鈕";
+        buttonEl.textContent = "按鈕";
+
+        // 抓到想要放入容器
+        const containerEl = document.querySelector(".container");
+        // 將 DOM 元素 放入容器
+        containerEl.appendChild(buttonEl);
+
+        // 移除 DOM 元素
+        buttonEl.remove();
+
+
+
+    </script>
+</body>
+
+</html>

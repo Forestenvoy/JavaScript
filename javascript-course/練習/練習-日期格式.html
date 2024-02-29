@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>練習-日期格式</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-日期格式</title>
+</head>
+
+<body>
+  <script>
+
+    const formatDate = (date) => {
+      let newDate = date.getFullYear() + '/';
+      if (date.getMonth() + 1 < 10) {
+        newDate += '0' + (date.getMonth() + 1) + '/';
+      }
+      else {
+        newDate += (date.getMonth() + 1) + '/';
+      }
+      if (date.getDate() < 10) {
+        newDate += '0' + date.getDate() + ' ';
+      }
+      else {
+        newDate += date.getDate() + ' ';
+      }
+      if (date.getHours() < 10) {
+        newDate += '0' + date.getHours() + ':';
+      }
+      else {
+        newDate += date.getHours() + ':';
+      }
+      if (date.getMinutes() < 10) {
+        newDate += '0' + date.getMinutes()
+      }
+      else {
+        newDate += date.getMinutes()
+      }
+      return newDate
+    }
+
+    console.log(formatDate(new Date()))
+  </script>
+</body>
+
 </html>

@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>練習-食物名稱</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>練習-食物名稱</title>
+</head>
+
+<body>
+  <script>
+    let food = [
+      '   chicken-nuggets ',
+      ' beef-stew   ',
+      'apple-pie   ',
+      '  fish-tacos',
+      '  cheese-burger ',
+      '  spaghetti-bolognese ',
+      '   bacon-lettuce-tomato  ',
+      '   egg-salad  ',
+      '  garlic-bread ',
+      '  honey-mustard-chicken ',
+    ];
+    let newFood = [];
+    // for of 寫法
+    // for (let item of food) {
+    //   let newName = item.trim();
+    //   newName = newName[0].toUpperCase() + newName.slice(1);
+    //   newName = newName.replaceAll("-", ' ');
+    //   newFood.push(newName);
+    // }
+    // for each 寫法
+    food.forEach(item => {
+      let newName = item.trim();
+      newName = newName[0].toUpperCase() + newName.slice(1);
+      newName = newName.replaceAll("-", ' ');
+      newFood.push(newName);
+    })
+
+    console.log(newFood);
+
+
+
+  </script>
+</body>
+
 </html>

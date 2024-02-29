@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>事件處理 Event Handle</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>事件處理 Event Handle</title>
+</head>
+
+<body>
+  <h1>事件處理 Event Handle</h1>
+  <h2>綁定事件方式1：on 事件</h2>
+  <h3>HTML 標籤綁定</h3>
+  <!-- 綁定事件 onclick，需要加小括號 -->
+  <button onclick="showAlert()">Html onclick 呼叫 alert</button>
+  <h3>DOM 綁定</h3>
+  <button id="alertBtn">DOM onclick 呼叫 alert</button>
+  <h2>綁定事件方式2：事件聆聽器</h2>
+  <button id="listenAlertBtn">DOM addEventListener 呼叫 alert</button>
+  <h2>鼠標事件</h2>
+  <h3>鼠標移動到控制項觸發</h3>
+  <button id="mouseoverBtn">mouseover 事件</button>
+  <h3>鼠標離開控制項觸發</h3>
+  <button id="mouseoutBtn">mouseout 事件</button>
+  <h3>當該控制項為焦點時觸發</h3>
+  <button id="focusBtn">focus 事件</button>
+  <h3>當該控制項失去焦點時觸發</h3>
+  <button id="blurBtn">blur 事件</button>
+  <h2>鍵盤事件</h2>
+  <h3>按下按鍵觸發</h3>
+  <button id="keydownBtn">keydown 事件</button>
+  <h3>按住按鍵觸發會連續觸發</h3>
+  <button id="keypressBtn">keypress 事件</button>
+  <h3>放開按鍵觸發</h3>
+  <button id="keyupBtn">keyup 事件</button>
+  <script>
+    function showAlert() {
+      alert("Hi");
+    }
+
+    // 綁定事件 onclick，不須加小括號
+    document.querySelector("#alertBtn").onclick = showAlert;
+
+    // 綁定事件 addEventListener(事件名稱，事件處理函式)
+    document.querySelector("#listenAlertBtn").addEventListener("click", showAlert);
+
+    document.querySelector("#mouseoverBtn").addEventListener("mouseover", function () {
+      console.log("mouseover!");
+    });
+
+    document.querySelector("#mouseoutBtn").addEventListener("mouseout", function () {
+      console.log("mouseout!");
+    })
+
+    document.querySelector("#focusBtn").addEventListener("focus", function () {
+      console.log("focus!");
+    })
+
+    document.querySelector("#blurBtn").addEventListener("blur", function () {
+      console.log("blur!");
+    })
+
+    document.querySelector("#keydownBtn").addEventListener("keydown", function () {
+      console.log("keydown!");
+    })
+
+    document.querySelector("#keypressBtn").addEventListener("keypress", function () {
+      console.log("keypress!");
+    })
+
+    document.querySelector("#keyupBtn").addEventListener("keyup", function () {
+      console.log("keyup!");
+    })
+
+  </script>
+</body>
+
 </html>
