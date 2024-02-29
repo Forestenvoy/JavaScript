@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>型別間的轉換 Type Conversion & Casting</title>
+</head>
+
+<body>
+  <script>
+    // const greeting = ["Hello", "World", "!"];
+    // const integer = 4;
+    // console.log(greeting.toString()); // Hello, World, !
+    // console.log(integer.toString()); // 4
+    // console.log(String(integer)); // 4
+    // console.log(String(greeting)); // Hello, World, !
+
+    // const integer2 = 4;
+    // const float = 0.847;
+    // console.log(integer2.toFixed(2)); // 4.00
+    // console.log(float.toFixed(2)); // 0.85
+    // console.log(float.toFixed()); // 1
+
+    // // 隱性強制轉型
+    // const a = "1";
+    // const b = 1;
+    // // b 被強制轉型為 string
+    // console.log(a + b); // 11
+
+    // const c = "8";
+    // // c 被強制轉型為 number
+    // console.log(a * c); // 8
+    // // a 被強制轉型為 number
+    // console.log(a - c); // -7
+
+    // Typecheck
+    const check = Number("oapple");
+    console.log(typeof check === "number"); // true
+    // NaN 也是數字 要特別注意
+    console.log(typeof check === "number" && !isNaN(check)); // false
+
+    // .csv 逗號分隔檔 <-- 實務上常用
+    const greeting = "Hi,,Hello,world,Taiwan,!";
+    console.log(greeting.split(','))
+    // ['Hi', '', 'Hello', 'world', 'Taiwan', '!']
+
+    const array = ["Hello", "World", "!"];
+    console.log(array.join(" "))
+    // 'Hello World !'
+
+    // JSON物件轉換
+    const info = {
+      owner: {
+        name: "Allie"
+      },
+      color: "white"
+    }
+    console.log(JSON.stringify(info));
+    // {"owner":{"name":"Allie"},"color":"white"} <-- 字串
+
+    const jsonStringInfo = '{"owner":{"name":"Allie"},"color":"white"}';
+    const newinfo = JSON.parse(jsonStringInfo);
+    // {owner: {…}, color: 'white'} <-- 物件
+    newinfo.owner.name = "Tom";
+    console.log(newinfo);
+    console.log(info);
+
+
+
+  </script>
+</body>
+
+</html>

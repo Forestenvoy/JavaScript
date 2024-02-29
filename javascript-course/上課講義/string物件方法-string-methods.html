@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>String 物件方法 String Methods</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>String 物件方法 String Methods</title>
+</head>
+
+<body>
+  <script>
+
+    // 全轉大寫
+    const greeting = "Hello world!";
+    console.log(greeting.toUpperCase());
+
+    // 全轉小寫
+    const greeting2 = "HELLO WORLD";
+    console.log(greeting2.toLowerCase());
+
+    // 移除空白
+    const greeting3 = "  Hello world!  ";
+    console.log(greeting3);
+    console.log(greeting3.trim());
+
+    // charAt()
+    const greeting4 = "Hello world!";
+    console.log(greeting4.charAt(7)); // o
+
+    // replace()
+    const greeting5 = "Hello world!";
+    console.log(greeting5.replace("world", "Taiwan")); // Hello Taiwan!
+    // replaceAll()
+    const greeting6 = "Hello world world!";
+    console.log(greeting6.replaceAll("world", "Taiwan")); // Hello Taiwan Taiwan!
+
+    // slice()
+    const greeting7 = "Hello world!";
+    console.log(greeting7.slice(6, 11)); // world
+    console.log(greeting7.slice(11, 6)); // (空白) <- 切不出來
+    console.log(greeting7.slice(0, 5)); // Hello
+    console.log(greeting7.slice(-3)); // ld!
+
+    // substring()
+    const greeting8 = "Hello world!";
+    console.log(greeting8.substring(6, 11)); // world
+    console.log(greeting8.substring(11, 6)); // world
+    console.log(greeting8.substring(-3)); // 負數 --> index = 0 Hello world!
+
+    // indexOf()
+    const greeting9 = "Hello world!";
+    console.log(greeting9.indexOf("o")); // 4
+    console.log(greeting9.indexOf("world")); // 6
+
+  </script>
+</body>
+
 </html>
