@@ -1,12 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>表單處理 Form</title>
-  </head>
 
-  <body>
-    <script></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>表單處理 Form</title>
+</head>
+
+<body>
+
+  <form action="" id="infoForm">
+    <!-- name 通常與表單提交和後端處理相關，而 id 用於標識和選擇單個元素，通常在CSS和JavaScript中使用。 -->
+    <div>
+      <label for="nameInput">姓名</label>
+      <input type="text" name="name" value="Allie" id="nameInput">
+    </div>
+    <div>
+      <label for="colorInput">喜歡的顏色</label>
+      <input type="text" name="color" id="colorInput">
+    </div>
+    <div>
+      <div>喜歡的寵物: cat</div>
+      <!-- "hidden"允許你在表單中儲存數據，但不顯示在用戶界面上 -->
+      <input type="hidden" name="pet" value="cat" id="petInput">
+    </div>
+    <!-- button 的 type 預設是 submit，需要加上 type="button"， 這樣才能觸發事件-->
+    <!-- <button>提交</button> -->
+    <button type="button">普通的按鈕</button>
+    <input type="submit" value="送出資訊表單">
+  </form>
+
+  <!-- novalidate 可以繞過驗證 -->
+  <form id="signupForm" novalidate>
+    <div>
+      <!-- required 為必填 -->
+      <label for="accountInput">帳號</label>
+      <input type="text" name="account" id="accountInput" required />
+      <div class="account" id="accountMsg" style="color: red;"></div>
+    </div>
+    <div>
+      <!-- minlength 和 maxlength 限制最小長度和最大長度 -->
+      <label for="passwordInput">密碼</label>
+      <input type="password" name="password" id="passwordInput" required minlength="8" maxlength="12" />
+      <div class="password" id="passwordMsg" style="color: red;"></div>
+    </div>
+    <div>
+      <label for="emailInput">Email</label>
+      <input type="email" name="email" id="emailInput" required />
+    </div>
+    <div>
+      <label for="ageInput">年齡</label>
+      <input type="number" name="age" id="ageInput" />
+    </div>
+    <div>
+      <label for="birthdayInput">生日</label>
+      <input type="date" name="birthday" id="birthdayInput" />
+    </div>
+    <div>
+      <label for="fileInput">檔案</label>
+      <input type="file" name="file" id="fileInput" />
+    </div>
+    <div>
+      <label for="commentTextarea">留言</label>
+      <textarea name="comment" id="commentTextarea" cols="30" rows="10">我想說...</textarea>
+    </div>
+    <!-- form 屬性 對應送出的表單 -->
+    <button type="submit" form="infoForm">送出資訊表單</button>
+    <button type="submit" form="signupForm">送出註冊表單</button>
+  </form>
+  <script>
+    // 獲取表單元素值
+    const nameInputEl = document.querySelector('#nameInput');
+    console.log(nameInputEl.value);
+    // 設定表單元素值
+    document.querySelector('#colorInput').value = 'white';
+
+    // 可以用中括號[html屬性]來取得表單元素
+    console.log(document.querySelector('[name = "pet"]'));
+
+
+    // 表單元素事件
+    // blur(失去焦點)時 如果有改變就會觸發 change事件  
+    nameInputEl.addEventListener("change", (event) => {
+      console.log(event.target.value);
+    });
+
+    // "資訊表單Form" 的 submit 事件
+    document.querySelector('#infoForm').addEventListener("submit", (event) => {
+      // 一般而言，傳統的 web 設計，表單將按照預設行為進行提交，導致頁面刷新或導向到指定的提交URL。 ---> 輸入的值會遺失
+      // event.preventDefault(); 會阻止事件的預設行為
+      event.preventDefault(); // 才有辦法獲取值
+      console.log("表單提交了");
+
+      console.log(event.target.elements);
+
+      //// 用 JSON 獲取表單值
+      let formObj = {};
+      let formElements = event.target.elements;
+      // 迴圈迭代表單元素
+      for (let element of formElements) {
+        // 如果 name 屬性存在，把值放入 formObj
+        if (element.name) {
+          // 元素 name 當作 key，元素 value 當作 value
+          formObj[element.name] = element.value;
+        }
+      }
+      console.log(formObj); // {name: 'Allie', color: 'white', pet: 'cat'}
+      JSON.stringify(formObj); // <-- JSON 字串 (資料送到後端要用的格式)
+    });
+
+    // "註冊表單Form" 的 submit 事件
+    document.querySelector("#signupForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log("註冊表單提交了");
+
+      //// 用 FormData 獲取表單值
+      // 傳入event.target，就會獲得所有表單元素的資訊
+      const formData = new FormData(event.target);
+      // 實際上 formData 已經可以送去後端了 
+      // 用迴圈迭代表單元素 (觀察用)
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(key, value);
+      // }
+
+      //// formData get/set 方法
+      formData.get("name"); // <-- 取得表單值
+      formData.set("name", "Allie"); // <-- 設定表單值
+
+      //// 手寫表單驗證
+      let isValid = true;
+      // 先清空錯誤訊息
+      document.querySelector("#accountMsg").textContent = "";
+      document.querySelector("#passwordMsg").textContent = "";
+      // 如果拿不到帳號的值
+      if (!formData.get("account")) {
+        document.querySelector("#accountMsg").textContent = "帳號為必填"
+        isValid = false;
+      }
+
+      // 如果拿不到密碼的值
+      if (formData.get("password").length < 6) {
+        document.querySelector("#passwordMsg").textContent = "長度需大於6"
+        isValid = false;
+      }
+
+      if (isValid) {
+        console.log("表單驗證通過");
+      }
+
+
+    });
+  </script>
+</body>
+
 </html>
