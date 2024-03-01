@@ -5,14 +5,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>事件處理 Event Handle</title>
+  <style>
+    /* 動畫定義 fadeIn */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 動畫定義 fadeOut */
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    .greeting {
+      background: lightblue;
+      /* 透明度 */
+      opacity: 0;
+      /* 隱藏 */
+      /* display: none; */
+    }
+
+    .show {
+      display: block;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .fadeOut {
+      animation: fadeOut 0.5s;
+    }
+
+    .fadeIn {
+      animation: fadeIn 0.5s;
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>事件處理 Event Handle</h1>
+
+  <!-- <h1>事件處理 Event Handle</h1>
   <h2>綁定事件方式1：on 事件</h2>
-  <h3>HTML 標籤綁定</h3>
+  <h3>HTML 標籤綁定</h3> -->
   <!-- 綁定事件 onclick，需要加小括號 -->
-  <button onclick="showAlert()">Html onclick 呼叫 alert</button>
+  <!-- <button onclick="showAlert()">Html onclick 呼叫 alert</button>
   <h3>DOM 綁定</h3>
   <button id="alertBtn">DOM onclick 呼叫 alert</button>
   <h2>綁定事件方式2：事件聆聽器</h2>
@@ -32,8 +81,15 @@
   <h3>按住按鍵觸發會連續觸發</h3>
   <button id="keypressBtn">keypress 事件</button>
   <h3>放開按鍵觸發</h3>
-  <button id="keyupBtn">keyup 事件</button>
+  <button id="keyupBtn">keyup 事件</button> -->
+
+  <!-- test, number,..., submit, button -->
+  <input type="button" class="greetingBtn" data-index="0" value="打個招呼">
+  <div class="greeting">Hi!</div>
+
   <script>
+    /*
+
     function showAlert() {
       alert("Hi");
     }
@@ -50,27 +106,75 @@
 
     document.querySelector("#mouseoutBtn").addEventListener("mouseout", function () {
       console.log("mouseout!");
-    })
+    });
 
     document.querySelector("#focusBtn").addEventListener("focus", function () {
       console.log("focus!");
-    })
+    });
 
     document.querySelector("#blurBtn").addEventListener("blur", function () {
       console.log("blur!");
-    })
+    });
 
     document.querySelector("#keydownBtn").addEventListener("keydown", function () {
       console.log("keydown!");
-    })
+    });
 
     document.querySelector("#keypressBtn").addEventListener("keypress", function () {
       console.log("keypress!");
-    })
+    });
 
     document.querySelector("#keyupBtn").addEventListener("keyup", function () {
       console.log("keyup!");
-    })
+    });
+
+    */
+
+    // DOM 物件加載好時要做的事情
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM Loaded!")
+
+      const greetingEL = document.querySelector(".greeting");
+      const greetingBtnEl = document.querySelector(".greetingBtn");
+      // console.log(greetingBtnEl);
+      let visible = false;
+      greetingBtnEl.addEventListener("click", (event) => {
+
+        //// 拿到事件資訊
+        // console.log(event);
+        // console.log(event.type); // click -> 點擊事件
+        // console.log(event.target); // 當前點擊的元素
+        // console.log(event.target.dataset.index); // 0
+
+        //// classList
+        // greetingEL.classList.add("show"); // 新增 class
+        // greetingEL.classList.remove("show"); // 移除 class
+        // greetingEL.classList.toggle("show"); // class 已存在就移除，不存在就新增
+        // classList.replace("要移除的 class", "要新增的 class")
+        // greetingEL.classList.replace("show", "hide");
+        // greetingEL.classList.replace("hide", "show");
+
+
+        // 動畫效果
+        if (visible) {
+          greetingEL.classList.remove("fadeIn");
+          greetingEL.classList.add("fadeOut");
+        }
+        else {
+          greetingEL.classList.remove("fadeOut");
+          greetingEL.classList.add("fadeIn");
+        }
+        visible = !visible;
+
+
+      });
+
+    });
+
+
+
+
+
 
   </script>
 </body>

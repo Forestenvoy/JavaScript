@@ -10,6 +10,26 @@
 <body>
   <script>
 
+    const string = "Hello World";
+    // 用斜線包住創建的正則表達式
+    const greeting = /Hello/;
+    // 用 RegExp 創建的正則表達式
+    const place = new RegExp("World");
+
+    // test()檢查正規表達式是否包含字串，回傳布林值
+    console.log(greeting.test(string)); // true
+
+    // exce()檢查正規表達式是否包含字串，回傳結果陣列，沒有回傳 null
+    console.log(place.exec(string));
+    // ['World', index: 6, input: 'Hello World', groups: undefined]
+
+    // match()檢查正規表達式是否包含字串，回傳結果陣列，沒有回傳 null
+    console.log(string.match(/or/));
+    // ['or', index: 7, input: 'Hello World', groups: undefined]
+
+    // replace()取代符合正規表達式的字串，回傳字串，沒有符合的字串回傳原本的字串
+    console.log(string.replace(/World/g, "Taiwan"));
+    // Hello Taiwan
   </script>
 </body>
 
