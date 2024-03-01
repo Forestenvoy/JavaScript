@@ -1,11 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>非同步 Asynchronous</title>
-  </head>
-  <body>
-    <script></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>非同步 Asynchronous</title>
+</head>
+
+<body>
+  <script>
+    //// 非同步概念
+    // console.log("起床");
+    // setTimeout(() => {
+    //   console.log("刷牙");
+    // }, 0);
+    // console.log("吃早餐");
+    // 起床 -> 吃早餐 -> 刷牙
+    // 因為 setTimeout 是非同步，會先跳過
+
+    // 實際應用
+    // 1. 其他程式碼
+    // 2. 打 API 拿到資料 data -> (非同步)
+    // 3. 把 data 拿來用
+    // 正常執行順序 1 -> 3 -> 2
+    // 所以需要寫 非同步 的程式碼來調整順序
+
+
+    //// callback hell
+
+    doWork('刷牙', 2000, (result) => {
+      console.log(`${result}, ${new Date().toISOString()}`);
+      doWork('洗臉', 3000, (result) => {
+        console.log(`${result}, ${new Date().toISOString()}`);
+        doWork('吃早餐', 5000, (result) => {
+          console.log(`${result}, ${new Date().toISOString()}`);
+        });
+      });
+    });
+
+
+    //// Promise
+    console.log("------------ Promise ------------");
+    function dowork(work, time) {
+      // resolve 解析成功，裡面放解析成功的結果
+      // reject 解析失敗，裡面放解析失敗的結果
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (work === "吃早餐") {
+            reject(`無法完成:${work}`);
+          }
+          else {
+            resolve(`完成:${work}`);
+          }
+        }, time);
+      });
+    };
+
+    // // then 接續執行
+    // dowork("刷牙", 2000)
+    //   .then((result) => {
+    //     // 這裡的 result = dowork("刷牙", 2000)回傳的結果;
+    //     console.log(`${result}, ${new Date().toISOString()}`);
+    //     // then 後 回傳一個新的 Promise
+    //     return dowork("洗臉", 3000);
+    //   })
+    //   .then((result) => {
+    //     // 這裡的 result = dowork("洗臉", 3000)回傳的結果;
+    //     console.log(`${result}, ${new Date().toISOString()}`);
+    //     // then 後 回傳一個新的 Promise
+    //     return dowork("吃早餐", 5000);
+    //   })
+    //   .then((result) => {
+    //     // 這裡的 result = dowork("吃早餐", 5000)回傳的結果;
+    //     console.log(`${result}, ${new Date().toISOString()}`);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error); // 解析錯誤的結果會回傳到這裡，然後直接結束程式
+    //   })
+    //   .finally(() => {
+    //     console.log("所有工具結束");
+    //   });
+
+    // 另一種寫法
+    const work1 = dowork("刷牙", 2000);
+    const work2 = dowork("洗臉", 3000);
+    const work3 = dowork("早餐", 5000);
+
+    Promise.all([work1, work2, work3]).then((result) => {
+      console.log(result);
+    });
+    // ['完成:刷牙', '完成:洗臉', '完成:早餐']
+
+  </script>
+</body>
+
 </html>
